@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class BellRing : MonoBehaviour
 {
-    [SerializeField] private BellGlow glow;
+    public string triggerTag = "Player";
 
+    private AudioSource audioSource;
 
-    private void Awake()
+    void Awake()
     {
-        glow = GetComponentInParent<BellGlow>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.playOnAwake = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (glow != null)
-        glow.Boost();
+        if (collision.CompareTag(triggerTag))
+        {
+            audioSource.Play();
+        }
     }
 }
