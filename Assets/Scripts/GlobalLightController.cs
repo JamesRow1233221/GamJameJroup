@@ -6,7 +6,7 @@ public class GlobalLightController : MonoBehaviour
     public Light2D globalLight;
 
     public float darknessSpeed = 5f;
-    public float minimumLight = 0.0005f;
+    public float minimumLight = 0.001f;
 
     private void Update()
     {
