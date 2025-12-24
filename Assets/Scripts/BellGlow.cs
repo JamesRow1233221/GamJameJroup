@@ -6,7 +6,8 @@ public class BellGlow : MonoBehaviour
 {
     public float boostedIntensity = 40f;
     public float boostTime = 0.15f;
-
+    public GlobalLightController globalLightController;
+    public float lightBoostAmount = 0.3f;
 
     Light2D light2D;
     float normalIntensity;
@@ -38,4 +39,14 @@ public class BellGlow : MonoBehaviour
         light2D.intensity = normalIntensity;
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Boost(); // bell glow effect
+            globalLightController.IncreaseLight(lightBoostAmount);
+        }
+    }
+
 }
